@@ -78,3 +78,19 @@ end
 get '/list' do
   File.read(File.join('src', 'ProNet.xml'))
 end
+
+get '/strengths' do
+  reader = XmlReader.new("/Users/karianneberg/code/teamdojo/src/ProNet.xml")
+
+  @network = reader.get_network
+  @programmers = reader.get_programmers
+  jason = @programmers["Jason"]
+  bill = @programmers["Bill"]
+  frank = @programemrs["Frank"]
+  team = [jason, bill, frank]
+  buffer = page_header
+  buffer << "team score for: #{team}"
+  buffer << page_footer
+
+  buffer
+end
