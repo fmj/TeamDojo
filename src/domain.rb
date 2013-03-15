@@ -1,4 +1,4 @@
-require './graphs.rb'
+require 'graphs.rb'
 
 class Programmer
 
