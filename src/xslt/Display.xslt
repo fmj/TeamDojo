@@ -8,27 +8,29 @@
       <html>
         <body>
           <table>
-            <th>
-              <tr>Programmers</tr>
-              <tr>Skills</tr>
-              <tr>Recommends</tr>
-            </th>
+            <tr>
+              <th>Programmers</th>
+              <th>Skills</th>
+              <th>Recommends</th>
+            </tr>
             <xsl:for-each select="/*[local-name()='Network']/*[local-name()='Programmer']">
-              <td>
-                <tr>
+              <tr>
+                <td>
                   <xsl:value-of select="./@name"/>
-                </tr>
-                <tr>
-                  <xsl:for-each select="./*[local-name()='Skills']">
-                    <xsl:value-of select="./*[local-name()='Skill']"/>
+                </td>
+                <td>
+                  <xsl:for-each select="./*[local-name()='Skills']/*[local-name()='Skill']">
+                    <xsl:value-of select="./text()"/>
+                    <xsl:text> , </xsl:text>
                   </xsl:for-each>
-                </tr>
-                <tr>
-                  <xsl:for-each select="./*[local-name()='Recommends']">
-                    <xsl:value-of select="./*[local-name()='Recommend']"/>
+                </td>
+                <td>
+                  <xsl:for-each select="./*[local-name()='Recommendations']/*[local-name()='Recommendation']">
+                    <xsl:value-of select="./text()"/>
+                    <xsl:text> , </xsl:text>
                   </xsl:for-each>
-                </tr>
-              </td>
+                </td>
+              </tr>
             </xsl:for-each>
             <td>
               
