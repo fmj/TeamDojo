@@ -22,7 +22,7 @@ class XmlReader
   def get_network
     programmers = get_programmers()
     programmers2 = @values.map do |programmer|
-      name = programmer.xpath "./@name"
+      name = programmer.xpath("./@name").text
       p1 = programmers[name]
 
       raw_recomends = programmer.xpath "./*[local-name()='Recommendations']"
@@ -31,6 +31,7 @@ class XmlReader
 
         p2 = programmers[rec.text]
         if p2
+          puts "#{p1.name} recommends #{p2.name}"
           @network.recommendation(p1, p2)
         end
       end
@@ -39,9 +40,9 @@ class XmlReader
     @network
   end
 
-  def get_programmers()
+  def get_programmers
     programmers = Hash[@values.map do |programmer|
-      name = programmer.xpath "./@name"
+      name = programmer.xpath("./@name").text
 
       raw_skills = programmer.xpath "./*[local-name()='Skills']"
       skills2 =raw_skills.xpath("./*[local-name()='Skill']")
@@ -52,6 +53,7 @@ class XmlReader
 
       p =Programmer.new(name, 0, skills)
       @network.add(p)
+      puts "Adding #{name}"
       [name, p]
     end
     ]

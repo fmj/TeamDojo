@@ -42,19 +42,9 @@ end
 
 get '/separation' do
 
-  #@network = Network.new
-  #
-  #@dave = Programmer.new("Dave")
-  #@bob = Programmer.new("Bob")
-  #
-  #@network.add(@dave)
-  #@network.add(@bob)
-
   reader = XmlReader.new("/Users/karianneberg/code/teamdojo/src/ProNet.xml")
 
   @network = reader.get_network
-
-  @network.recommendation(@dave, @bob)
 
   buffer = page_header
 

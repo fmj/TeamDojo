@@ -10,8 +10,10 @@ class XmlReaderTest
     end
 
     it "finds programmers" do
-
-      @reader.get_programmers().size().should == 10
+      programmers = @reader.get_programmers()
+      programmers.keys().size().should == 10
+      p = programmers["Stu"]
+      p.name.should == "Stu"
     end
 
     it "connects programmers" do
