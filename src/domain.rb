@@ -20,7 +20,7 @@ class Network
 	end
 
 	def recommendation(recommender, recommendee)
-		@graph.connect(recommender, recommendee)
+		@graph.connect_mutually(recommender, recommendee)
 	end
 
 	def distance_between(one, two)
