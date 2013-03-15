@@ -14,6 +14,14 @@ class Graph < Array
   def initialize
     @edges = []
   end
+
+  def has_vertex(vertex)
+    include?(vertex)
+  end
+
+  def has_edge_between(src, dst)
+    length_between(src, dst) == 1
+  end
   
   def connect(src, dst, length = 1)
     unless self.include?(src)

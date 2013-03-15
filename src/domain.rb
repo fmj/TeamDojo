@@ -29,6 +29,14 @@ class Network
 		@graph.dijkstra(one, two)
   end
 
+  def has_recommendation?(recommender, recommendee)
+    @graph.has_edge_between(recommender, recommendee)
+  end
+
+  def has_programmer(programmer)
+    @graph.has_vertex(programmer)
+  end
+
   def all_programmers
     @graph
   end

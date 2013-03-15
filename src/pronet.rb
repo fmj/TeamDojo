@@ -1,5 +1,6 @@
 require 'sinatra'
 require_relative 'domain.rb'
+require_relative 'xml_reader.rb'
 
 def empty_cell
   "<td></td>"
@@ -29,14 +30,29 @@ def table_header
 end
 
 get '/' do
+  buffer = page_header
 
-  @network = Network.new
+  buffer << "<a href='separation'>Degrees of separation</a><br />"
+  buffer << "<a href='list'>Programmer list</a>"
 
-  @dave = Programmer.new("Dave")
-  @bob = Programmer.new("Bob")
+  buffer << page_footer
 
-  @network.add(@dave)
-  @network.add(@bob)
+  buffer
+end
+
+get '/separation' do
+
+  #@network = Network.new
+  #
+  #@dave = Programmer.new("Dave")
+  #@bob = Programmer.new("Bob")
+  #
+  #@network.add(@dave)
+  #@network.add(@bob)
+
+  reader = XmlReader.new("/Users/karianneberg/code/teamdojo/src/ProNet.xml")
+
+  @network = reader.get_network
 
   @network.recommendation(@dave, @bob)
 
@@ -57,4 +73,8 @@ get '/' do
   buffer << page_footer
 
   buffer
+end
+
+get '/list' do
+  File.read(File.join('src', 'ProNet.xml'))
 end
