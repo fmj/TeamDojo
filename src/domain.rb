@@ -1,8 +1,9 @@
 require './graphs.rb'
 
 class Programmer
-  def initialize(name, skills = [])
+  def initialize(name, kudos = 0, skills = [])
     @name = name
+    @kudos = kudos
     @skills = skills
   end
   
