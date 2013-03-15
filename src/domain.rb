@@ -1,6 +1,8 @@
 require_relative 'graphs.rb'
 
 class Programmer
+
+  attr_reader :name, :kudos, :skills
   def initialize(name, kudos = 0, skills = [])
     @name = name
     @kudos = kudos
