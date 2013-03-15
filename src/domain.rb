@@ -1,4 +1,4 @@
-require 'graphs.rb'
+require_relative 'graphs.rb'
 
 class Programmer
 
@@ -27,6 +27,11 @@ class Network
 
 	def distance_between(one, two)
 		@graph.dijkstra(one, two)
-	end
+  end
+
+  def all_programmers
+    @graph
+  end
+
 end
 
