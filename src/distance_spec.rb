@@ -32,4 +32,6 @@ describe @network, "#distance_between" do
 
     @network.distance_between(@bob, @dave).should eq 1
   end
+
+
 end
